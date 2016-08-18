@@ -12,19 +12,6 @@
 */
 
 
-use Illuminate\Support\Facades\View;
-
-Route::controllers([
-    'auth' => 'Auth\AuthController',
-    'password' => 'Auth\PasswordController',
-]);
-
-//Route::get('/', function () {
-//    return view('tests.upload');
-//});
-
-Route::post('/test/upload', ['uses' => 'TestController@upload']);
-
 
 Route::get('/', function () {
     return view('index');
@@ -42,6 +29,3 @@ Route::group(array('prefix' => 'api'), function () {
     Route::resource('accounts', 'AccountController');
 
 });
-
-
-

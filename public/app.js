@@ -4,7 +4,7 @@
     angular
         .module('app',
             [
-                'ngRoute',
+                'app.auth',
                 'app.account'
             ]);
 })();
