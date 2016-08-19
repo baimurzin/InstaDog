@@ -5,6 +5,7 @@
         .module('app',
             [
                 'app.auth',
-                'app.account'
+                'app.account',
+                'app.test'
             ]);
 })();

@@ -3,30 +3,47 @@
 
     angular
         .module('app.account')
-        .factory('commentFactory', commentFactory);
+        .factory('accountFactory', accountFactory);
 
-    commentFactory.$inject = ['$http'];
+    accountFactory.$inject = ['$http', '$q'];
 
-    function commentFactory($http) {
+    function accountFactory($http, $q) {
         return {
             get: function () {
-                return $http.get('/api/accounts');
+                var defer = $q.defer();
+                $http.get('/api/accounts')
+                    .success(function (data) {
+                        defer.resolve(data);
+                    })
+                    .error(defer.reject);
+                return defer.promise;
             },
 
             save: function (accountData) {
-                return $http({
+                var defer = $q.defer();
+                $http({
                     method: 'POST',
                     url: '/api/accounts',
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                     data: $.param(accountData)
-                });
+                })
+                    .success(function (data) {
+                        defer.resolve(data);
+                    })
+                    .error(defer.reject);
+                return defer.promise;
             },
 
             destroy: function (id) {
-                return $http.delete('/api/accounts/' + id);
+                var defer = $q.defer();
+                $http.delete('/api/accounts/' + id)
+                    .success(function (data) {
+                        defer.resolve(data);
+                    })
+                    .error(defer.reject);
+                return defer.promise;
             }
 
-            //todo
         };
     }
 })();

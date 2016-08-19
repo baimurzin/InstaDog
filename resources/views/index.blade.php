@@ -29,6 +29,7 @@
 <script src="{{asset('/app/account/account.module.js')}}"></script>
 <script src="{{asset('/app/account/account.controller.js')}}"></script>
 <script src="{{asset('/app/account/account.factory.js')}}"></script>
+<script src="{{asset('/app/test/test.js')}}"></script>
 
 </body>
 </html>

@@ -13,6 +13,8 @@
 
         vm.loadingAccounts = true;
 
-
+        accountFactory.get().then(function (data) {
+            console.log(data);
+        });
     }
 })();
