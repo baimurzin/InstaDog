@@ -22,6 +22,7 @@ Route::group(array('prefix' => 'api'), function () {
 
     Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
     Route::post('authenticate', 'AuthenticateController@authenticate');
+    Route::get('authenticate/user', 'AuthenticateController@getAuthenticatedUser');
 
     // since we will be using this just for CRUD, we won't need create and edit
     // Angular will handle both of those forms

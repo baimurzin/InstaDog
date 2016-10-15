@@ -7,9 +7,9 @@
         .module('app.test')
         .controller('TestController', TestController);
 
-    TestController.$inject = ['$http'];
+    TestController.$inject = ['$http', 'authService'];
 
-    function TestController($http) {
+    function TestController($http, authService) {
 
 
         var vm = this;
@@ -18,6 +18,7 @@
         vm.error;
 
         vm.getUsers = getUsers;
+        vm.logout = logout;
 
         function getUsers() {
             $http.get('api/authenticate')
@@ -27,6 +28,10 @@
                 .error(function (err) {
                     vm.error = err;
                 });
+        }
+
+        function logout() {
+            authService.logout();
         }
     }
 

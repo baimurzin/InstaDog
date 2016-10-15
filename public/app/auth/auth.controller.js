@@ -5,26 +5,24 @@
         .module('app.auth')
         .controller('AuthController', AuthController);
 
-    AuthController.$inject = ['$auth', '$state'];
+    AuthController.$inject = ['authService'];
 
-    function AuthController($auth, $state) {
-
+    function AuthController(authService) {
         var vm = this;
 
         vm.login = login;
-
+        vm.logout = logout;
 
         function login() {
-            var credentials = {
+            authService.login({
                 email: vm.email,
                 password: vm.password
-            };
-
-            $auth.login(credentials).then(function (data) {
-
-                // If login is successful, redirect to the users state
-                $state.go('users', {});
             });
         }
+
+        function logout() {
+            authService.logout();
+        }
     }
+
 })();

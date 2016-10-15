@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\Inspire::class,
-        Commands\Inst::class
+        Commands\Inst::class,
+        Commands\InstagramGetFollowersCommand::class,
     ];
 
     /**

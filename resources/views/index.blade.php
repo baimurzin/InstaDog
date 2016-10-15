@@ -21,15 +21,18 @@
 <script src="{{asset('/vendor/js/bootstrap.min.js')}}"></script>
 
 {{--app.js--}}
-<script src="{{asset('app.js')}}"></script>
+<script src="{{asset('app.js') . '?' . time()}}"></script>
+{{--conf.js--}}
+<script src="{{asset('/app/conf/run.app.js') . '?' . time()}}"></script>
+<script src="{{asset('/app/auth/auth.service.js') . '?' . time()}}"></script>
 {{--account module--}}
-<script src="{{asset('/app/auth/auth.module.js')}}"></script>
-<script src="{{asset('/app/auth/auth.config.js')}}"></script>
-<script src="{{asset('/app/auth/auth.controller.js')}}"></script>
-<script src="{{asset('/app/account/account.module.js')}}"></script>
-<script src="{{asset('/app/account/account.controller.js')}}"></script>
-<script src="{{asset('/app/account/account.factory.js')}}"></script>
-<script src="{{asset('/app/test/test.js')}}"></script>
+<script src="{{asset('/app/auth/auth.module.js') . '?' . time()}}"></script>
+<script src="{{asset('/app/auth/auth.config.js') . '?' . time()}}"></script>
+<script src="{{asset('/app/auth/auth.controller.js') . '?' . time()}}"></script>
+<script src="{{asset('/app/account/account.module.js') . '?' . time()}}"></script>
+<script src="{{asset('/app/account/account.controller.js') . '?' . time()}}"></script>
+<script src="{{asset('/app/account/account.factory.js') . '?' . time()}}"></script>
+<script src="{{asset('/app/test/test.js') . '?' . time()}}"></script>
 
 </body>
 </html>
