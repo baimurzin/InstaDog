@@ -15,6 +15,11 @@
 
                 responseError: function(rejection) {
 
+                    if (rejection.status == 401) {
+                        $state.go('auth');
+                        return $q.reject(rejection);
+                    }
+
                     // Need to use $injector.get to bring in $state or else we get
                     // a circular dependency error
                     var $state = $injector.get('$state');
@@ -44,6 +49,8 @@
                 }
             }
         }
+
+
 
         // Setup for the $httpInterceptor
         $provide.factory('redirectWhenLoggedOut', redirectWhenLoggedOut);
