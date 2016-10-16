@@ -19,13 +19,35 @@ var ngAnnotate = require('gulp-ng-annotate');
 //});
 
 gulp.task('js', function () {
-    gulp.src(['public/app.js', 'public/app/**/*.module.js','public/app/**/*.app.js', 'public/app/**/*.config.js', 'public/app/**/*.js'])
+    gulp.src([
+            'public/app.js',
+            'public/app/**/*.module.js',
+            'public/app/**/*.app.js',
+            'public/app/**/*.config.js',
+            'public/app/**/*.js'
+        ])
         .pipe(concat('app.min.js'))
         .pipe(ngAnnotate())
         .pipe(uglify())
-        .pipe(gulp.dest('public'))
+        .pipe(gulp.dest('public'));
+
+
+});
+
+gulp.task('delivery', function () {
+    gulp.src([
+            'node_modules/angular-ui-notification/dist/angular-ui-notification.min.js'
+        ])
+        .pipe(concat('vendor.js'))
+        .pipe(gulp.dest('public/vendor/js/modules'));
+
+    gulp.src([
+            'node_modules/angular-ui-notification/dist/angular-ui-notification.css'
+        ])
+        .pipe(concat('vendor.css'))
+        .pipe(gulp.dest('public/vendor/css/modules'))
 });
 
 gulp.task('default', function () {
-    gulp.run('js');
+    gulp.run('js', 'delivery');
 });

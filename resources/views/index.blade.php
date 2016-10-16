@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="{{asset('/vendor/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('/vendor/css/ionicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('/css/style.css')}}">
+
+    <link rel="stylesheet" href="{{asset('/vendor/css/modules/vendor.css')}}">
 </head>
 <body>
 
@@ -19,6 +21,9 @@
 <script src="{{asset('/vendor/js/ng/ng-ui-route.min.js')}}"></script>
 <script src="{{asset('/vendor/js/jquery.min.js')}}"></script>
 <script src="{{asset('/vendor/js/bootstrap.min.js')}}"></script>
+
+{{--assets--}}
+<script src="{{asset('/vendor/js/modules/vendor.js') . '?' . time()}}"></script>
 
 {{--app.js--}}
 {{--<script src="{{asset('app.js') . '?' . time()}}"></script>--}}

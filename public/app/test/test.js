@@ -7,10 +7,9 @@
         .module('app.test')
         .controller('TestController', TestController);
 
-    TestController.$inject = ['$http', 'authService'];
+    TestController.$inject = ['$http', 'authService', 'Notification'];
 
-    function TestController($http, authService) {
-
+    function TestController($http, authService, Notification) {
 
         var vm = this;
 
@@ -21,6 +20,7 @@
         vm.logout = logout;
 
         function getUsers() {
+            Notification.primary('Primary notification');
             $http.get('api/authenticate')
                 .success(function (users) {
                     vm.users = users;
