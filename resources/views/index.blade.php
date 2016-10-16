@@ -9,19 +9,24 @@
     <link rel="stylesheet" href="{{asset('/css/style.css')}}">
 
     <link rel="stylesheet" href="{{asset('/vendor/css/modules/vendor.css')}}">
+
+    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.css'
+          type='text/css' media='all'/>
+
 </head>
 <body>
 
 <div ui-view></div>
 
 <script src="{{asset('/vendor/js/angular.min.js')}}"></script>
-<!-- Satellizer CDN -->
+
 <script src="{{asset('/vendor/js/satellizer.min.js')}}"></script>
 
 <script src="{{asset('/vendor/js/ng/ng-ui-route.min.js')}}"></script>
 <script src="{{asset('/vendor/js/jquery.min.js')}}"></script>
 <script src="{{asset('/vendor/js/bootstrap.min.js')}}"></script>
-
+<script type='text/javascript'
+        src='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.js'></script>
 {{--assets--}}
 <script src="{{asset('/vendor/js/modules/vendor.js') . '?' . time()}}"></script>
 

@@ -5,9 +5,9 @@
         .module('app')
         .controller('SignupController', SignUpController);
 
-    SignUpController.$inject = ['authService', '$state'];
+    SignUpController.$inject = ['authService', '$state', 'Notification'];
 
-    function SignUpController(authService, $state) {
+    function SignUpController(authService, $state, Notification) {
         var vm = this;
 
         vm.signup = signup;
@@ -21,7 +21,10 @@
 
             authService.signup(user).catch(function (response) {
                 if (response.status == 302) {
+                    Notification.success('Registration successful!');
                     $state.go('auth');
+                } else {
+                    Notification.warning('Something goes wrong.');
                 }
             });
         }
