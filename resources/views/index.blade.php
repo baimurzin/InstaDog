@@ -16,6 +16,9 @@
 </head>
 <body>
 
+<app-header></app-header>
+<app-side-bar></app-side-bar>
+
 <div ui-view></div>
 
 <script src="{{asset('/vendor/js/angular.min.js')}}"></script>
