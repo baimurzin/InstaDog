@@ -21,18 +21,20 @@
 <script src="{{asset('/vendor/js/bootstrap.min.js')}}"></script>
 
 {{--app.js--}}
-<script src="{{asset('app.js') . '?' . time()}}"></script>
+{{--<script src="{{asset('app.js') . '?' . time()}}"></script>--}}
+<script src="{{asset('app.min.js') . '?' . time()}}"></script>
 {{--conf.js--}}
-<script src="{{asset('/app/conf/run.app.js') . '?' . time()}}"></script>
-<script src="{{asset('/app/auth/auth.service.js') . '?' . time()}}"></script>
+{{--<script src="{{asset('/app/conf/run.app.js') . '?' . time()}}"></script>--}}
+{{--<script src="{{asset('/app/auth/auth.service.js') . '?' . time()}}"></script>--}}
 {{--account module--}}
-<script src="{{asset('/app/auth/auth.module.js') . '?' . time()}}"></script>
-<script src="{{asset('/app/auth/auth.config.js') . '?' . time()}}"></script>
-<script src="{{asset('/app/auth/auth.controller.js') . '?' . time()}}"></script>
-<script src="{{asset('/app/account/account.module.js') . '?' . time()}}"></script>
-<script src="{{asset('/app/account/account.controller.js') . '?' . time()}}"></script>
-<script src="{{asset('/app/account/account.factory.js') . '?' . time()}}"></script>
-<script src="{{asset('/app/test/test.js') . '?' . time()}}"></script>
+{{--<script src="{{asset('/app/auth/auth.module.js') . '?' . time()}}"></script>--}}
+{{--<script src="{{asset('/app/auth/auth.config.js') . '?' . time()}}"></script>--}}
+{{--<script src="{{asset('/app/auth/auth.controller.js') . '?' . time()}}"></script>--}}
+{{--<script src="{{asset('/app/auth/signup.controller.js') . '?' . time()}}"></script>--}}
+{{--<script src="{{asset('/app/account/account.module.js') . '?' . time()}}"></script>--}}
+{{--<script src="{{asset('/app/account/account.controller.js') . '?' . time()}}"></script>--}}
+{{--<script src="{{asset('/app/account/account.factory.js') . '?' . time()}}"></script>--}}
+{{--<script src="{{asset('/app/test/test.js') . '?' . time()}}"></script>--}}
 
 </body>
 </html>

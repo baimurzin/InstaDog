@@ -15,7 +15,8 @@
 
         return {
             login: login,
-            logout: logout
+            logout: logout,
+            signup: signup
         };
 
         function login(credentials) {
@@ -41,6 +42,10 @@
                 $rootScope.currentUser = null;
                 $state.go('auth');
             });
+        }
+
+        function signup(user) {
+            return $auth.signup(user);
         }
 
     }

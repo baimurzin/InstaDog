@@ -13,7 +13,7 @@
 
             return {
 
-                responseError: function(rejection) {
+                responseError: function (rejection) {
 
                     if (rejection.status == 401) {
                         $state.go('auth');
@@ -31,9 +31,9 @@
 
                     // Loop through each rejection reason and redirect to the login
                     // state if one is encountered
-                    angular.forEach(rejectionReasons, function(value, key) {
+                    angular.forEach(rejectionReasons, function (value, key) {
 
-                        if(rejection.data.error === value) {
+                        if (rejection.data.error === value) {
 
                             // If we get a rejection corresponding to one of the reasons
                             // in our array, we know we need to authenticate the user so
@@ -51,7 +51,6 @@
         }
 
 
-
         // Setup for the $httpInterceptor
         $provide.factory('redirectWhenLoggedOut', redirectWhenLoggedOut);
 
@@ -60,6 +59,7 @@
 
 
         $authProvider.loginUrl = '/api/authenticate';
+        $authProvider.signupUrl = '/api/signup';
         $urlRouterProvider.otherwise('/auth');
 
         $stateProvider
@@ -77,6 +77,11 @@
                 url: '/dashboard',
                 templateUrl: '../app/views/dashboard/main.html',
                 controller: 'AccountController as account'
+            })
+            .state('signup', {
+                url: '/signup',
+                templateUrl: '../app/views/auth/signUpView.html',
+                controller: 'SignupController as auth'
             })
     }
 
