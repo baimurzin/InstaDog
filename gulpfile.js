@@ -36,18 +36,19 @@ gulp.task('js', function () {
 
 gulp.task('delivery', function () {
     gulp.src([
-            'node_modules/angular-ui-notification/dist/angular-ui-notification.min.js'
+            'node_modules/angular-ui-notification/dist/angular-ui-notification.min.js',
+            'node_modules/ng-dialog/js/ngDialog.min.js'
         ])
         .pipe(concat('vendor.js'))
         .pipe(gulp.dest('public/vendor/js/modules'));
 
     gulp.src([
-            'node_modules/angular-ui-notification/dist/angular-ui-notification.css'
+            'node_modules/angular-ui-notification/dist/angular-ui-notification.css',
+            'node_modules/ng-dialog/css/ngDialog.min.css',
+            'node_modules/ng-dialog/css/ngDialog-theme-default.min.css'
         ])
         .pipe(concat('vendor.css'))
-        .pipe(gulp.dest('public/vendor/css/modules'))
+        .pipe(gulp.dest('public/vendor/css/modules'));
 });
 
-gulp.task('default', function () {
-    gulp.run('js', 'delivery');
-});
+gulp.task('default', ['js', 'delivery']);

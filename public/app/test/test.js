@@ -7,9 +7,9 @@
         .module('app.test')
         .controller('TestController', TestController);
 
-    TestController.$inject = ['$http', 'authService', 'Notification'];
+    TestController.$inject = ['$http', 'authService', 'Notification', 'ngDialog'];
 
-    function TestController($http, authService, Notification) {
+    function TestController($http, authService, Notification, ngDialog) {
 
         var vm = this;
 
@@ -20,7 +20,7 @@
         vm.logout = logout;
 
         function getUsers() {
-            Notification.primary('Primary notification');
+            ngDialog.open({template: '/app/views/popups/test.html'});
             $http.get('api/authenticate')
                 .success(function (users) {
                     vm.users = users;

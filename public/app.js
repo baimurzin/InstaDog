@@ -5,6 +5,7 @@
         .module('app',
             [
                 'ui-notification',
+                'ngDialog',
                 'angular-loading-bar',
                 'app.auth',
                 'app.account',
