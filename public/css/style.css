@@ -20,3 +20,135 @@ body {
     box-shadow: 0 8px 17px rgba(0, 0, 0, .2);
 }
 
+aside .region {
+    min-height: 0;
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+
+#main-content {
+    background: #fff;
+    border: 1px solid #c9cbca;
+}
+
+#main-content .content {
+    border: 1px solid #c9cbca ;
+}
+
+aside {
+    background-color: #fff;
+}
+
+aside .add-account a{
+    width: auto;
+    height: 88px;
+    margin: 0;
+    padding: 30px 0 30px 27px;
+    display: block;
+    /*background-color: #fff;*/
+    background-image: url('/img/insta.svg');
+    background-position: 91% 50%;
+    background-repeat: no-repeat;
+    font: normal 18px "os";
+    color: #252525;
+    text-transform: none;
+    line-height: 28px;
+}
+
+aside .region {
+    min-height: 0;
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.region .accounts-listed {
+    border-top: 1px solid #e7e9e8;
+}
+
+.user-accounts .accounts-list-header {
+    font-size: 14px;
+    color: #15b49e;
+    padding: 12px 16px;
+    font-family: "os-light";
+    overflow: auto;
+    border-bottom: 1px solid #e7e9e8;
+}
+
+.user-accounts .accounts-list-header span {
+    font-family: os-sbold;
+    display: block;
+    float: left;
+    padding-right: 3px;
+}
+
+
+.accounts-listed .inst-account {
+    border-bottom: 1px solid #e7e9e8;
+    position: relative;
+}
+
+.accounts-listed .inst-account a {
+    height: 88px;
+    padding: 19px 0;
+    background: none;
+    color: #242424;
+    font: normal 14px "os-sbold";
+    border-left: 2px solid transparent;
+    display: block;
+    overflow: hidden;
+}
+
+.accounts-listed .inst-account:hover div {
+    opacity: 1;
+}
+
+.accounts-listed .inst-account a.active:before {
+    border-top: 4px solid rgba(223,46,46,0);
+    border-bottom: 4px solid rgba(55,55,55,0);
+    border-left: 4px solid #15b49e;
+    left: 1px;
+    top: 38px;
+    content: "";
+    position: absolute;
+}
+
+.accounts-listed .inst-account a div {
+    opacity: 0.5;
+}
+
+.accounts-listed .inst-account .inst-account-img {
+    padding: 0 14px 0 26px;
+    float: left;
+}
+
+.accounts-listed .inst-account .inst-account-img img {
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    border: 0;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.accounts-listed .inst-account a .inst-account-name {
+    padding: 9px 0 3px;
+    line-height: 1;
+}
+
+.accounts-listed .inst-account .inst-account-log {
+    color: #666;
+    line-height: 1;
+    font-family: "os";
+}
+

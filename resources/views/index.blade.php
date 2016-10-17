@@ -14,12 +14,19 @@
           type='text/css' media='all'/>
 
 </head>
-<body>
+<body ng-controller="AppController as app">
 
-<app-header></app-header>
-<app-side-bar></app-side-bar>
+<app-header ng-if="authenticated"></app-header>
 
-<div ui-view></div>
+<div class="container">
+    <div class="row">
+        <section id="main-content" class="col-md-12">
+            <app-side-bar ng-if="authenticated"></app-side-bar>
+            <div ui-view></div>
+        </section>
+    </div>
+</div>
+
 
 <script src="{{asset('/vendor/js/angular.min.js')}}"></script>
 

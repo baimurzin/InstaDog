@@ -5,9 +5,9 @@
         .module('app')
         .service('authService', authService);
 
-    authService.$inject = ['$auth', '$state', '$http', '$rootScope'];
+    authService.$inject = ['$auth', '$state', '$http', '$rootScope', '$q'];
 
-    function authService($auth, $state, $http, $rootScope) {
+    function authService($auth, $state, $http, $rootScope, $q) {
         var vm = this;
 
         vm.loginError = false;
@@ -16,8 +16,10 @@
         return {
             login: login,
             logout: logout,
-            signup: signup
+            signup: signup,
+            checkUser: checkUser
         };
+
 
         function login(credentials) {
 
@@ -33,6 +35,26 @@
                 $rootScope.currentUser = response.data.user;
                 $state.go('users');
             })
+        }
+
+        function checkUser() {
+            var defer = $q.defer();
+            $http.get('api/authenticate/user')
+                .success(function (response) {
+                    var user = response.data.user;
+                    var userStr = JSON.stringify(user);
+                    localStorage.setItem('user', userStr);
+                    $rootScope.authenticated = true;
+                    $rootScope.currentUser = user;
+                    defer.resolve(user);
+                })
+                .error(function (error) {
+                    localStorage.removeItem('user');
+                    $rootScope.authenticated = false;
+                    $rootScope.currentUser = null;
+                    defer.reject(error.data.error);
+                });
+            return defer.promise;
         }
 
         function logout() {

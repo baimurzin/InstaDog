@@ -5,9 +5,9 @@
         .module('app')
         .run(runApp);
 
-    runApp.$inject = ['$rootScope', '$state'];
+    runApp.$inject = ['$rootScope', '$state', 'authService'];
 
-    function runApp($rootScope, $state) {
+    function runApp($rootScope, $state, authService) {
         $rootScope.$on('$stateChangeStart', function (event, toState) {
 
             var user = JSON.parse(localStorage.getItem('user'));
