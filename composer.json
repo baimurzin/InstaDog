@@ -8,7 +8,8 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "mgp25/instagram-php": "dev-master",
-        "tymon/jwt-auth": "0.5.*"
+        "tymon/jwt-auth": "0.5.*",
+        "laravel/cashier": "~6.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

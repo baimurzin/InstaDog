@@ -5,12 +5,15 @@
         .module('app')
         .controller('SideBarController', sideBarController);
 
-    sideBarController.$inject = ['authService', 'ngDialog'];
+    sideBarController.$inject = ['authService', 'ngDialog', 'accountFactory'];
 
-    function sideBarController(authService, ngDialog) {
+    function sideBarController(authService, ngDialog, accountFactory) {
         var vm = this;
 
         vm.addAccountForm = addAccountForm;
+        vm.accounts = [];
+
+        init();
 
         function addAccountForm() {
             ngDialog.open({
@@ -18,6 +21,14 @@
                 controller: 'PopupAccountController as popupAcc'
             });
         }
+
+        function init() {
+            console.log('init');
+            accountFactory.get().then(function (response) {
+                vm.accounts = response;
+            })
+        }
+
 
     }
 })();

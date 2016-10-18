@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AccountController extends Controller
 {
@@ -35,13 +36,23 @@ class AccountController extends Controller
             $user = Auth::user();
             $account_data = $request->only(['login', 'password']);
 
+            $valid = Validator::make($account_data, [
+                'login' => 'required',
+                'password' => 'required'
+            ]);
+
+            if ($valid->fails()) {
+                $messages = $valid->messages()->getMessages();
+                $messages['status'] = 'bad';
+                return response()->json($messages, 500);
+            }
             $account = new Account();
             $account = $account->fill($account_data);
             $account->user_id = $user->id;
             $account->save();
 
             if ($account)
-                return response()->json($account, 302);
+                return response()->json($account);
         } catch (\Exception $e) {
             return response()->json([
                 'message' => $e->getMessage(),
