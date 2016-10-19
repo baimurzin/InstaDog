@@ -21,7 +21,8 @@ class AccountController extends Controller
      */
     public function index()
     {
-        return response()->json(Account::get());
+        $accounts = Account::where('user_id', Auth::id())->get();
+        return response()->json($accounts);
     }
 
 
