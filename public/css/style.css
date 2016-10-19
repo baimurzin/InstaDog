@@ -121,6 +121,16 @@ aside .region {
     position: absolute;
 }
 
+
+
+.accounts-listed .inst-account a.active {
+    border-color: #15b49e;
+}
+
+.accounts-listed .inst-account a.active div, .accounts-listed .inst-account a:hover div {
+    opacity: 1;
+}
+
 .accounts-listed .inst-account a div {
     opacity: 0.5;
 }

@@ -5,9 +5,9 @@
         .module('app')
         .controller('PopupAccountController', popupAccountController);
 
-    popupAccountController.$inject = ['accountFactory'];
+    popupAccountController.$inject = ['$rootScope', 'accountFactory', 'Notification'];
 
-    function popupAccountController(accountFactory) {
+    function popupAccountController($rootScope, accountFactory, Notification) {
         var vm = this;
 
         vm.save = save;
@@ -16,12 +16,10 @@
             accountFactory.save({
                 login: vm.login,
                 password: vm.password
-            }).then(function (res) {
-                console.log('respo');
-                console.log(res);
+            }).then(function (response) {
+                $rootScope.$broadcast('account:added', response);
             }, function (error) {
-                console.log("err");
-                console.log(error);
+                Notification.error('Bad')
             })
         }
     }

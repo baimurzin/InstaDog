@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class AccountController extends Controller
@@ -70,7 +71,7 @@ class AccountController extends Controller
     public function show($id)
     {
         try {
-            $account = Account::findOrFail((int) $id);
+            $account = Account::findOrFail((int)$id);
             if ($account)
                 return response()->json($account);
             else
@@ -106,7 +107,7 @@ class AccountController extends Controller
     public function destroy($id)
     {
         try {
-            $account = Account::findOrFail((int) $id);
+            $account = Account::findOrFail((int)$id);
             $removed = $account->delete();
             if ($account && $removed)
                 return response()->json([
@@ -117,6 +118,38 @@ class AccountController extends Controller
                 throw new \Exception;
         } catch (\Exception $e) {
             return $this->composeError($e);
+        }
+    }
+
+    public function activateAccount(Request $request, $account_id)
+    {
+        try {
+            $user = Auth::user();
+            $account = Account::where('id', '=', $account_id)
+                ->where('user_id', '=', $user->id)
+                ->first();
+
+            if ($account) {
+                DB::beginTransaction();
+                $account->active = true;
+                $account->save();
+
+                Account::where('user_id', $user->id)
+                    ->where('id', '!=', $account_id)
+                    ->update([
+                        'active' => false
+                    ]);
+
+
+                DB::commit();
+                return response()->json($account);
+            } else {
+                throw new \Exception;
+            }
+
+        } catch (\Exception $e) {
+            DB::rollback();
+            $this->composeError($e);
         }
     }
 

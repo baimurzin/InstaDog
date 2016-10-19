@@ -42,6 +42,14 @@
                     })
                     .error(defer.reject);
                 return defer.promise;
+            },
+
+            activate: function (id) {
+                var defer = $q.defer();
+                $http.put('/api/activateAccount/' + id)
+                    .success(defer.resolve)
+                    .error(defer.reject);
+                return defer.promise;
             }
 
         };

@@ -5,15 +5,26 @@
         .module('app')
         .controller('SideBarController', sideBarController);
 
-    sideBarController.$inject = ['authService', 'ngDialog', 'accountFactory'];
+    sideBarController.$inject = ['$scope', 'authService', 'ngDialog', 'accountFactory'];
 
-    function sideBarController(authService, ngDialog, accountFactory) {
+    function sideBarController($scope, authService, ngDialog, accountFactory) {
         var vm = this;
 
-        vm.addAccountForm = addAccountForm;
         vm.accounts = [];
+        vm.addAccountForm = addAccountForm;
+        vm.activateAccount = activateAccount;
 
         init();
+
+        $scope.$on('account:added', function (event, data) {
+            vm.accounts.push(data);
+        });
+
+        function init() {
+            accountFactory.get().then(function (response) {
+                vm.accounts = response;
+            })
+        }
 
         function addAccountForm() {
             ngDialog.open({
@@ -22,13 +33,20 @@
             });
         }
 
-        function init() {
-            console.log('init');
+        function activateAccount(id) {
+            accountFactory.activate(id)
+                .then(function (response) {
+                    updateAccounts();
+                }, function (error) {
+                    console.log(error);
+                })
+        }
+
+        function updateAccounts() {
             accountFactory.get().then(function (response) {
                 vm.accounts = response;
             })
         }
-
 
     }
 })();

@@ -27,6 +27,7 @@ Route::group(array('prefix' => 'api'), function () {
     Route::group(['middleware' => 'jwt.auth'], function() {
         Route::get('authenticate/user', 'AuthenticateController@getAuthenticatedUser');
         Route::resource('accounts', 'AccountController');
+        Route::put('activateAccount/{account_id}', 'AccountController@activateAccount');
 
     });
 });
