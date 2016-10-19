@@ -6,9 +6,9 @@
 
     <link rel="stylesheet" href="{{asset('/vendor/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('/vendor/css/ionicons.min.css')}}">
-    <link rel="stylesheet" href="{{asset('/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/style.css') . '?' . time()}}">
 
-    <link rel="stylesheet" href="{{asset('/vendor/css/modules/vendor.css')}}">
+    <link rel="stylesheet" href="{{asset('/vendor/css/modules/vendor.css') . '?' . time()}}">
 
     <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.css'
           type='text/css' media='all'/>
