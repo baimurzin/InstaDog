@@ -24,7 +24,7 @@ class AddAccountIdColumnToInstagramAccountsDatasTable extends Migration
      */
     public function down()
     {
-        Schema::table('instagram_accounts_datas', function (Blueprint $table) {
+        Schema::table('instagram_account_datas', function (Blueprint $table) {
             $table->dropColumn('account_id');
         });
     }

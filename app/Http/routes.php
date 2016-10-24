@@ -14,20 +14,34 @@
 
 
 Route::get('/', function () {
-    return view('index');
+    return 123;
 });
+//
+//// API ROUTES ==================================
+//Route::group(array('prefix' => 'api'), function () {
+//
+//    Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
+//    Route::post('authenticate', 'AuthenticateController@authenticate');
+//    Route::post('/signup', 'AuthenticateController@register');
+//
+//    Route::group(['middleware' => 'jwt.auth'], function() {
+//        Route::get('authenticate/user', 'AuthenticateController@getAuthenticatedUser');
+//        Route::resource('accounts', 'AccountController');
+//        Route::put('activateAccount/{account_id}', 'AccountController@activateAccount');
+//
+//    });
+//});
 
-// API ROUTES ==================================
-Route::group(array('prefix' => 'api'), function () {
+Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard', 'namespace' => 'Dashboard'], function () {
+    Route::get('/', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
 
-    Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
-    Route::post('authenticate', 'AuthenticateController@authenticate');
-    Route::post('/signup', 'AuthenticateController@register');
-
-    Route::group(['middleware' => 'jwt.auth'], function() {
-        Route::get('authenticate/user', 'AuthenticateController@getAuthenticatedUser');
-        Route::resource('accounts', 'AccountController');
-        Route::put('activateAccount/{account_id}', 'AccountController@activateAccount');
-
+    Route::group(['prefix' => 'instagram', 'namespace' => 'Instagram'] , function() {
+        Route::get('/', ['as' => 'instagram.index', 'uses' => 'AccountController@index']);
+        Route::get('account', ['as'=>'instagram.accounts.get', 'uses' => 'AccountController@all']);
+        Route::get('account/create', ['as'=>'instagram.accounts.create', 'uses' => 'AccountController@create']);
+        Route::post('account', ['as'=>'instagram.accounts.store', 'uses' => 'AccountController@store']);
     });
 });
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

@@ -73,7 +73,7 @@ class AccountController extends Controller
     {
         try {
             $account = Account::findOrFail((int)$id);
-            if ($account)
+            if ($account)//todo fix Auth search by user id
                 return response()->json($account);
             else
                 throw new \Exception;
@@ -108,8 +108,11 @@ class AccountController extends Controller
     public function destroy($id)
     {
         try {
-            $account = Account::findOrFail((int)$id);
-            $removed = $account->delete();
+            $account = Account::where('user_id', Auth::id())
+                ->where('account_id', $id)
+                ->first();
+            if ($account)
+                $removed = $account->delete();
             if ($account && $removed)
                 return response()->json([
                     'status' => 'ok',

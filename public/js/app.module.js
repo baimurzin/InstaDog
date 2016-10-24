@@ -1,0 +1,2 @@
+var IM = {};
+IM.Instagram = {};

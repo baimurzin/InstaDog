@@ -1,0 +1,123 @@
+@import url("http://fonts.googleapis.com/css?family=Montserrat:400,700");
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800");
+
+html {
+    height: 100%;
+    font-size: 100%;
+}
+
+body {
+    color: #565656;
+    background: #F0F3F3;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-size: 100%;
+    padding: 0px;
+    margin: 0px;
+    min-height: 100%;
+    position: relative;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: "Montserrat", sans-serif;
+    color: #424856;
+    margin: 0;
+}
+
+h1,
+.h1 {
+    font-size: 1.375em;
+}
+
+h2,
+.h2 {
+    font-size: 1.188em;
+}
+
+h3,
+.h3 {
+    font-size: 1.063em;
+}
+
+h4,
+.h4 {
+    font-size: 0.938em;
+}
+
+h5,
+.h5 {
+    font-size: 0.813em;
+}
+
+h6,
+.h6 {
+    font-size: 0.75em;
+}
+
+p {
+    font-size: 0.875em;
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+img {
+    max-width: 100%;
+}
+
+::selection {
+    background: #fff7dd;
+}
+
+::-moz-selection {
+    background: #fff7dd;
+}
+
+a:hover,
+a:active {
+    outline: none !important;
+    text-decoration: none !important;
+    color: #999999 !important;
+}
+
+a:link {
+    text-decoration: none;
+    outline: none;
+    color: #2e2e32;;
+}
+
+.widget-mini {
+    position: relative;
+}
+
+.widget-mini .title {
+    font-size: 1em;
+}
+
+.widget-mini .total {
+    font-size: 2em;
+    display: block;
+    font-weight: 300;
+}
+
+.widget-mini > i {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+}

@@ -50,14 +50,16 @@ class InstagramGetFollowersCommand extends Command
 
         try {
             $instagram = new Instagram($login, $password, $debug);
-            $instagram->login();
+            if (!$instagram->isLoggedIn)
+                $instagram->login();
+
 
 //            $username = "baimurzinv";
 //
-//            $userNameId = $instagram->getUsernameId($username);
+            $userNameId = $instagram->getSelfUsernameInfo();
 
-            $d = $instagram->getv2Inbox();
-            var_dump($d->getInbox());
+//            $d = $instagram->getv2Inbox();
+            var_dump($userNameId->getMediaCount());
 //            $followers = Cache::remember($userNameId.'followers',50, function() use ($instagram, $userNameId) {
 //                return $instagram->getUserFollowers($userNameId);
 //            });
