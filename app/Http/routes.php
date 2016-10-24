@@ -14,7 +14,7 @@
 
 
 Route::get('/', function () {
-    return 123;
+    return '<a class="link" href="/dashboard">Dashboard </a>';
 });
 //
 //// API ROUTES ==================================

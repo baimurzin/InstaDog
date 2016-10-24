@@ -129,7 +129,7 @@
 
 </div>
 
-<script src="{{url('plugins/jQuery/jQuery-2.2.3.min.js')}}"></script>
+<script src="{{url('plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
 
 <script src="{{url('bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{url('plugins/iCheck/icheck.min.js')}}"></script>
