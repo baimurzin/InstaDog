@@ -83,12 +83,30 @@ class AccountController extends Controller
             if ($account)
                 return [
                     'status' => 'Ok',
-                    'redirect' => route('instagram.index')
+                    'notify' => [
+                        'type' => 'success',
+                        'message' => 'Account added successfully'
+                    ]
                 ];
         } catch (\Exception $e) {
             DB::rollback();
             Log::error($e->getMessage()."\nFile: ".$e->getFile().":".$e->getLine());
         }
         return response('Error when saving account', 500);
+    }
+
+
+    public function delete($ids) {
+        $ids = explode(",", $ids);
+
+        if (count($ids)) {
+            Account::where('user_id', '=', Auth::user()->id)
+                ->whereIn('id', $ids)
+                ->delete();
+        }
+
+        return [
+            'status' => 'Ok'
+        ];
     }
 }

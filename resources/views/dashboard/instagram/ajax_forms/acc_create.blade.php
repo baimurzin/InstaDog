@@ -1,4 +1,6 @@
-<form action="{{URL::route('instagram.accounts.store')}}" method="post" onsubmit="return popupModule.submitPopupForm(this);">
+<form action="{{URL::route('instagram.accounts.store')}}" method="post" onsubmit="return popupModule.submitPopupForm(this, function() {
+commonModule.refreshTable(IM.Instagram.Accounts.instagram_accounts_table);
+        });">
     <div class="form-group @if($errors->has('login')) has-error @endif">
         <label>Login:</label>
         <input type="text" name="login" class="form-control" value="{{old('login')}}">

@@ -38,6 +38,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard', 'namespace' => 
     Route::group(['prefix' => 'instagram', 'namespace' => 'Instagram'] , function() {
         Route::get('/', ['as' => 'instagram.index', 'uses' => 'AccountController@index']);
         Route::get('account', ['as'=>'instagram.accounts.get', 'uses' => 'AccountController@all']);
+        Route::delete('account/{ids}', ['as'=>'instagram.accounts.delete', 'uses' => 'AccountController@delete']);
         Route::get('account/create', ['as'=>'instagram.accounts.create', 'uses' => 'AccountController@create']);
         Route::post('account', ['as'=>'instagram.accounts.store', 'uses' => 'AccountController@store']);
     });

@@ -48,17 +48,17 @@ IM.Instagram.Accounts = {};
                         }
                     },
                     {
-                        field: 'followings',
+                        field: 'acc_data.followings_count',
                         title: 'Followings',
                         sortable: true
                     },
                     {
-                        field: 'followers',
+                        field: 'acc_data.followers_count',
                         title: 'Followers',
                         sortable: true
                     },
                     {
-                        field: 'posts',
+                        field: 'acc_data.media_count',
                         title: 'Posts',
                         sortable: true
                     }

@@ -46,6 +46,7 @@ class InstFirstAuthCommand extends Command
             $accounts = Account::where('status', Account::STATUS_WAIT_LOGIN)->get();
 
             if (!$accounts || !count($accounts)) {
+                $this->info('No accounts to auth');
                 return false;
             }
 
@@ -68,7 +69,9 @@ class InstFirstAuthCommand extends Command
                 $accData->media_count = $selfInfo->getMediaCount();
                 $accData->save();
                 $account->status = Account::STATUS_OK;
+                $account->save();
                 DB::commit();
+                $this->info('[' . $selfInfo->getUsername() . '] - proceed!');
             }
         } catch (InstagramException $e) {
             DB::rollback();

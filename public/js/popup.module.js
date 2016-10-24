@@ -81,6 +81,12 @@ var popupModule = {};
                     cache: false,
                     success: function (data) {
                         if (data.status && data.status == 'Ok' && !data.body) {
+
+                            if (data.refreshTable) {
+                                commonModule.refreshTable(data.refreshTable);
+                                return false;
+                            }
+
                             if (data.redirect) {
                                 document.location = data.redirect;
                                 return false;
@@ -93,7 +99,7 @@ var popupModule = {};
                             currentPopup.modal('hide');
 
                             if (callback) {
-                                callback(data);
+                                callback();
                             }
 
                             return true;
