@@ -23,8 +23,8 @@ class TestController extends Controller
     public function upload()
     {
 
-        $username = 'sweet_home_prod';
-        $password = 'Notepad123';
+        $username = '';
+        $password = '';
         $debug = true;
 
         $photo = '';     // path to the photo
