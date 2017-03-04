@@ -43,8 +43,8 @@ class InstagramGetFollowersCommand extends Command
      */
     public function handle()
     {
-        $login = "sweet_home_prod";
-        $password = "Notepad123";
+        $login = "";
+        $password = "";
         $debug = false;
         $userNameId = 3623830696;
 
